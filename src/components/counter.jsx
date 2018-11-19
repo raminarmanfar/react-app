@@ -11,6 +11,11 @@ class Counter extends Component {
     fontWeight: "bold"
   };
 
+  //   constructor() {
+  //     super();
+  //     this.handleIncrement = this.handleIncrement.bind(this);
+  //   }
+
   renderTags() {
     if (this.state.length === 0) return null;
 
@@ -23,13 +28,24 @@ class Counter extends Component {
     );
   }
 
+  handleIncrement = product => {
+    console.log(product);
+    this.setState({ count: this.state.count + 1 });
+  };
+
   render() {
     return (
       <React.Fragment>
         <span style={this.styles} className={this.getBadgeClasses()}>
           {this.formatCount()}
         </span>
-        <button className="btn btn-secondary btn-sm">Icrement</button>
+        <button
+          onClick={() => this.handleIncrement({ id: 1 })}
+          className="btn btn-secondary btn-sm"
+        >
+          Icrement
+        </button>
+        {this.renderTags()}
       </React.Fragment>
     );
   }
